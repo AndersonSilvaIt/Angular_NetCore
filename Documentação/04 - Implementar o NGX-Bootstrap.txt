@@ -1,0 +1,10 @@
+npm i bootstrap
+
+npm i ngx-bootstrap
+
+após instalar, é preciso referenciar esses dois dentro de styles.css
+pois esse arquivo é global.
+
+criado o componente para navegação  NavComponent
+
+routerLinkActive="active" server para marcar o item do menu ativo.
