@@ -1,0 +1,33 @@
+criado o componente de Alunos
+
+usando o Angular Files, para criar um componente basta clicar com o direito em "app" e generate componente
+
+ao criar esses dois componentes é automaticamente adicionado a referência dentro de app.modules.ts
+
+Obs: no selectr é criado "app-alunos / app....."
+
+pois na configuração do angular.json o "prefix" está  como "app"
+
+para usar rotas no Angular, dentro do html principal, é preciso usar a tag <router-outlet></router-outlet>
+isso está na documentação do angular
+
+após usar essa tag, é preciso configurar as rotas dentro do arquivo app-routing.module.ts
+
+no arquivo principal, app.component.html é implementado os links de navegação
+
+
+<nav>
+    <ul>
+        <li>
+            <a href="professores">Professores</a>
+        </li>
+        <li>
+            <a href="alunos">Alunos</a>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+ao usar o href, é feito um postback na página, mas esse não é o princípio do postback, para usar uma SPA
+é preciso trocar pelo routerLink
