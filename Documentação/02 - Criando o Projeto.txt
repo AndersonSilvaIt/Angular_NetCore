@@ -1,0 +1,6 @@
+para criar um projeto Angular
+
+ng new SmartSchool
+
+Escolher para criar as rotas e irá trabalhar com o css.
+
