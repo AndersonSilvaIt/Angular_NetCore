@@ -12,12 +12,12 @@ export class ProfessoresComponent implements OnInit {
   titulo = 'Professores';
 
   professores = [
-    {nome: 'Emanuel'},
-    {nome: 'Claudia'},
-    {nome: 'Maria'},
-    {nome: 'Eduardo'},
-    {nome: 'Rodolfo'}
-  ]
+    { id: 1, nome: 'Emanuel' , disciplina: 'Matematica' },
+    { id: 2, nome: 'Claudia' , disciplina: 'Física' },
+    { id: 3, nome: 'Maria'   , disciplina: 'Português' },
+    { id: 4, nome: 'Eduardo' , disciplina: 'Inglês' },
+    { id: 5, nome: 'Rodolfo' , disciplina: 'Programação' }
+  ];
 
   ngOnInit() {
   }
