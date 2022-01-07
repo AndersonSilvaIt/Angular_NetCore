@@ -1,0 +1,8 @@
+Para implementar o DropDown Link
+
+ng add ngx-bootstrap --component dropdowns
+
+ng add ngx-bootstrap@^5.3.2 --component dropdowns
+
+tinha gerado um erro ao instalar essa biblioteca, pois a versão do rxjs era menor do que 
+a biblioteca do ngx-bootstrap, por isso precisei instalar uma versão anterior do ngx.
