@@ -1,0 +1,16 @@
+Na listagem de alunos é usado a diretiva ngIf
+onde mostra ou não os dados da tabela.
+
+<div *ngIf="alunoSelecionado">
+
+    <app-titulo [titulo]="'Aluno: ' + alunoSelecionado " ></app-titulo>
+
+    <br>
+    <button class="btn btn-default" (click)="voltar()">Voltar</button>
+</div>
+
+se a variável alunoSelecionado estiver preenchida com alguma coisa, mostra somente os dados dele
+
+<div *ngIf="!alunoSelecionado">
+
+se a variável alunoSelecionado estiver vazia, ai mostra a listagem completa.
