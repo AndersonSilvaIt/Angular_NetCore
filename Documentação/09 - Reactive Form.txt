@@ -1,0 +1,40 @@
+Para usar o Reactive form, dentro de app.module.ts é preciso importar um componente
+
+
+ReactiveFormsModule
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  
+  dentro do ts do Aluno, é criado uma propriedade do tipo FormGroup
+  
+ public alunoForm : FormGroup;
+
+é preciso importar a biblioteca
+
+import { FormGroup } from '@angular/forms';
+
+dentro de cosntrutor, é criado o formulário de alunoForm
+dentro do html, é preciso passar o nome do forumlário criado no TS.
+
+
+  criarForm(){
+    this.alunoForm = this.fb.group({
+      nome:  [''],
+      sobrenome: [''],
+      telefone: ['']
+    });
+  }
+é criad oa configuração dos itens para o bind
+
+dentro do html, é implementado os Binds: usando o formControlName
+
+<input type="text" formControlName="telefone" class="form-control">  

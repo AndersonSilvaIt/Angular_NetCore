@@ -1,0 +1,23 @@
+para poder utilizar o ngModel
+
+é preciso dentro de app.module.ts
+e adicionar o FormsModule dentro de imports
+
+import { FormsModule } from '@angular/forms';
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    FormsModule
+  ],
+  
+  
+  no html basta usar o [(ngModel)=""]
+  
+  
+      <div>
+        <input type="text" [(ngModel)]="textSimple" >
+        <p> {{ textSimple }} </p>
+    </div>

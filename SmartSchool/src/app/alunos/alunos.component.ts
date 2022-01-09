@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Aluno } from '../models/Aluno';
 
 @Component({
   selector: 'app-alunos',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunosComponent implements OnInit {
 
-public alunoSelecionado : string;
-
-titulo = 'Alunos'
+  public alunoForm : FormGroup;
+  public titulo = 'Alunos'
+  public alunoSelecionado : Aluno;
+  public textSimple: string;
 
   public alunos = [
     { id: 1 , nome: 'Marta', sobrenome: 'Kent' , telefone: '6669998877' },
@@ -21,19 +24,36 @@ titulo = 'Alunos'
     { id: 7 , nome: 'Paulo', sobrenome: 'José' , telefone: '888996655' }
   ];
 
-  constructor() { }
-
-  alunoSelected(aluno: any) {
-
-    this.alunoSelecionado = aluno.nome;
-
-  }
-
-  voltar(){
-    this.alunoSelecionado = '';
-  }
+  constructor(private fb : FormBuilder) 
+  {
+    this.criarForm();
+   }
 
   ngOnInit() {
   }
+
+  criarForm(){
+    this.alunoForm = this.fb.group({
+      nome:  ['', Validators.required],
+      sobrenome: [''],
+      telefone: ['']
+    });
+  }
+
+  alunoSubmit(){
+    
+    console.log(this.alunoForm.value);
+
+  }
+
+  alunoSelected(aluno: Aluno) {
+    this.alunoSelecionado = aluno;
+    //this.alunoForm.patchValue(aluno);
+  }
+
+  voltar(){
+    this.alunoSelecionado = null;
+  }
+
 
 }
