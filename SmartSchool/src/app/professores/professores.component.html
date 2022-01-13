@@ -1,49 +1,59 @@
-<div *ngIf="professorSelecionado">
+<div class="row">
 
-    <div class="row">
-        <div class="mr-auto">
-            <app-titulo [titulo]="'Professor: ' + professorSelecionado.id " ></app-titulo>
+    <div class="col-sm-6" *ngIf="professorSelecionado">
+
+        <div class="row">
+            <div class="mr-auto">
+                <app-titulo [titulo]="'Professor: ' + professorSelecionado.id "></app-titulo>
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-warning" (click)="voltar()">
+                    Lista de Professores
+                </button>
+            </div>
         </div>
 
-        <div class="mt-1" >
-            <button class="btn btn-warning" (click)="voltar()">
-                Lista de Professores
-            </button>
-        </div>
+        <form [formGroup]="professorForm" (submit)="professorSubmit()">
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" formControlName="nome" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Disciplina</label>
+                <input type="text" formControlName="disciplina"  class="form-control">
+            </div>
+
+            <div class="form-group">
+                <hr>
+                <button class="btn btn-success" [disabled]="!professorForm.valid">
+                    Enviar
+                </button>
+            </div>
+
+        </form>
+
     </div>
 
-    <form>
-        <div class="form-group" >
-            <label >Nome</label>
-            <input type="text" value="{{ professorSelecionado.nome }}" class="form-control" >
-        </div>
+    <div [ngClass]="{'col-sm-6' : professorSelecionado, 'col-sm-12' : !professorSelecionado}">
+        <app-titulo [titulo]="titulo"></app-titulo>
 
-        <div class="form-group" >
-            <label  >Disciplina</label>
-            <input type="text" value="{{ professorSelecionado.disciplina }}" class="form-control" >
-        </div>
-
-    </form>
-
-</div>
-
-<div *ngIf="!professorSelecionado">
-    <app-titulo [titulo]="titulo" ></app-titulo>
-
-    <table class="table table-hover" style="cursor: pointer;">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Disciplina</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let prof of professores" (click)="professorSelected(prof)">
-                <th scope="row">{{ prof.id}}</th>
-                <td> {{ prof.nome }} </td>
-                <td> {{ prof.disciplina }} </td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-hover" style="cursor: pointer;">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Disciplina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prof of professores" (click)="professorSelected(prof)">
+                    <th scope="row">{{ prof.id}}</th>
+                    <td> {{ prof.nome }} </td>
+                    <td> {{ prof.disciplina }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

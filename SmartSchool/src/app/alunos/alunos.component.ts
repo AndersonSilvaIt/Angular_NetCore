@@ -27,7 +27,7 @@ export class AlunosComponent implements OnInit {
   constructor(private fb : FormBuilder) 
   {
     this.criarForm();
-   }
+  }
 
   ngOnInit() {
   }
@@ -47,8 +47,9 @@ export class AlunosComponent implements OnInit {
   }
 
   alunoSelected(aluno: Aluno) {
+    
     this.alunoSelecionado = aluno;
-    //this.alunoForm.patchValue(aluno);
+    this.alunoForm.patchValue(aluno);
   }
 
   voltar(){
