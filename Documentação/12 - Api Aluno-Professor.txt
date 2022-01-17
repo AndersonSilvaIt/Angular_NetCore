@@ -1,0 +1,34 @@
+para recompilar automaticamente basta usar o comando
+
+dotnet watch run
+
+Criado as classes das Models ...
+
+para instalar o entity frameworkCore, basta usar a extensão do Nuget Package Manager instalado no vscode
+
+
+digitar os comandos ctrl + shift + p, na barra superior irá aparecer a opção "Nugget Package ...",
+ao clicar nela, em alguns segundos, irá aparecer o campo para digitar o pacote que deseja instalar.
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqLite
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.Design
+
+criado o context DataContext com alguns inserts iniciais.
+
+
+dotnet ef migrations add inicial  ==>  Cria as migrations
+
+dotnet ef database update  ==> Cria o Banco de Dados
+
+Ao buscar os dados, deu um erro de Chamadas Circulares, pois um aluno tem várias disciplinas, uma disciplina tem vários alunos e etc.
+
+Para resolver isso, é preciso instalar um pacote.
+Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
+e dentro de startup, implementar o NewtonSoft.
+
+            services.AddControllers()
+                    .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = 
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore);
