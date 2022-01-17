@@ -1,0 +1,31 @@
+para usar os modais, é preciso adicionar as referências do Angular Modal
+
+ng add ngx-bootstrap --component modals
+
+adicionado a referência do ModalModule dentro de app.module.rs
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot()
+  ],
+
+Para usar a modal, é preciso criar o método dentro do arquivo de typescript
+aluno.component.ts
+
+  public modalRef: BsModalRef;
+  
+  no construtor, é passado a injeção de dependência
+  constructor(private fb : FormBuilder, private modalService: BsModalService) 
+  {
+    this.criarForm();
+  }
+
+  openModal(template: TemplateRef<any> ){
+    this.modalRef = this.modalService.show(template);
+  }  
+ 

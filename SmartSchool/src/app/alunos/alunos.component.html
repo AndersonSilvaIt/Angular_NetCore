@@ -59,15 +59,15 @@
             </thead>
             <tbody>
                 <tr *ngFor="let aluno of alunos" style="cursor: pointer;" >
-                    <td><button (click)="alunoSelected(aluno)" class="btn  btn-sm btn-outline-warning">Detalhe</button></td>
+                    <td><button (click)="alunoSelected(aluno)" class="text-dark btn btn-sm btn-outline-warning">Detalhe</button></td>
                     <td scope="row">{{ aluno.id}}</td>
                     <td> {{ aluno.nome }} </td>
                     <td> {{ aluno.sobrenome }} </td>
                     <td> {{ aluno.telefone }} </td>
                     <td>
                         <div>
-                            <button class="btn  btn-sm btn-outline-primary">Editar</button>
-                            <button class="btn  btn-sm btn-outline-danger">Excluir</button>
+                            <button (click)="openModal(template)" class="btn  btn-sm btn-outline-primary">Professores</button>
+                            <button class="btn  btn-sm btn-outline-danger">Desativar</button>
                         </div>
                     </td>
                 </tr>
@@ -75,3 +75,15 @@
         </table>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-body">
+        <app-professores></app-professores>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn pull-right" aria-label="Close" 
+            (click)="modalRef.hide()">
+            Fechar        
+        </button>
+    </div>
+</ng-template>

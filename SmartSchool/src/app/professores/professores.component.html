@@ -42,18 +42,38 @@
         <table class="table table-hover" style="cursor: pointer;">
             <thead class="thead-light">
                 <tr>
+                    <th>Visualizar</th>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Disciplina</th>
+                    <th scope="col">Opções</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let prof of professores" (click)="professorSelected(prof)">
-                    <th scope="row">{{ prof.id}}</th>
+                <tr *ngFor="let prof of professores" >
+                    <td><button (click)="professorSelected(prof)" class="text-dark btn btn-sm btn-outline-warning">Detalhe</button></td>
+                    <td scope="row">{{ prof.id}}</td>
                     <td> {{ prof.nome }} </td>
                     <td> {{ prof.disciplina }} </td>
+                    <td>
+                        <div class="btn-group"> 
+                            <button (click)="openModal(template)" class="btn btn-sm btn-outline-primary">Alunos</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-body">
+        <app-alunos></app-alunos>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn pull-right" aria-label="Close" 
+            (click)="modalRef.hide()">
+            Fechar        
+        </button>
+    </div>
+</ng-template>
