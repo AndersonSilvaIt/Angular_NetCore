@@ -1,0 +1,4 @@
+Dentro da pasta do app basta digitar 
+dotnet new web api -n SmartSchool-WebAPI
+
+dotnet run roda a aplicação.
