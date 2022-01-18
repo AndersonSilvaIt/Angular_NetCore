@@ -1,0 +1,28 @@
+Para realizar a comunicação do Angular com o .Net Core é preciso sar o HttpClient
+
+é preciso importar o HttpClient dentro de app.modules.ts
+
+import { HttpClientModule } from '@angular/common/http'
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    HttpClientModule
+  ],
+  
+ Criado o arquivo de service de alunos para fazer as requisições e inserts.
+ 
+No arquivo de aluno.component.ts ao iniciar, é preenchido a lista de alunos para usar na tela.
+
+a API é bloqueada por CORS, então removi o código que implementar o CORS.
+
+            app.UseCors(x => x.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+            );
+			Permite todo mundo acessar.

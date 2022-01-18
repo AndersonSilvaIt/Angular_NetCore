@@ -27,7 +27,7 @@ namespace SmartSchool_WebAPI
 
 
             services.AddControllers()
-                    .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = 
+                    .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling =
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(c =>
@@ -53,6 +53,12 @@ namespace SmartSchool_WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(x => x.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+            );
+
 
             app.UseEndpoints(endpoints =>
             {
