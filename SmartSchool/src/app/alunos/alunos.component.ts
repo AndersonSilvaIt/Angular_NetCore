@@ -47,14 +47,30 @@ export class AlunosComponent implements OnInit {
 
   criarForm() {
     this.alunoForm = this.fb.group({
+      id: [""],
       nome: ["", Validators.required],
       sobrenome: [""],
       telefone: [""],
     });
   }
 
+  salvarAluno(aluno: Aluno) {
+    console.log(aluno);
+
+    this.alunoService.put(aluno).subscribe(
+      (model: Aluno) => {
+        console.log(model);
+        this.carregarAlunos();
+      },
+      (error: any) => {
+        console.log("Deu erro");
+        console.log(error);
+      }
+    );
+  }
+
   alunoSubmit() {
-    console.log(this.alunoForm.value);
+    this.salvarAluno(this.alunoForm.value);
   }
 
   alunoSelected(aluno: Aluno) {
