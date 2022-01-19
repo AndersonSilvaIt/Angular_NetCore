@@ -1,0 +1,9 @@
+Ao realizar o Insert ou Delete,
+
+eu não preciso chamar o alunoService.put / post ...
+
+eu consigo acessar o objeto (parecido com reflection)
+
+essa variável "modo" tem a opção put ou post.
+
+this.alunoService[this.modo](aluno).subscribe( ...

@@ -2,7 +2,8 @@
 
     <div class="col-sm-6" *ngIf="professorSelecionado">
 
-        <app-titulo [titulo]="'Professor: ' + professorSelecionado.id ">
+        <app-titulo
+            [titulo]="(professorSelecionado.id === 0 ? 'Novo Professor' : 'Cód. Professor: ' + professorSelecionado.id) ">
             <button class="btn btn-warning" (click)="voltar()">
                 Lista de Professores
             </button>
@@ -22,7 +23,7 @@
             <div class="form-group">
                 <hr>
                 <button class="btn btn-success" [disabled]="!professorForm.valid">
-                    Enviar
+                    Salvar
                 </button>
             </div>
 
@@ -32,7 +33,7 @@
 
     <div [ngClass]="{'col-sm-6' : professorSelecionado, 'col-sm-12' : !professorSelecionado}">
         <app-titulo [titulo]="titulo">
-            <button class="btn btn-success" (click)="voltar()">
+            <button class="btn btn-success" (click)="professorNovo()">
                 Cadastrar Professor
             </button>
         </app-titulo>

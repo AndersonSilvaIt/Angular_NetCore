@@ -7,7 +7,7 @@
 
     <div class="col-sm-6" *ngIf="alunoSelecionado">
 
-        <app-titulo [titulo]="'Cód. Aluno: ' + alunoSelecionado.id ">
+        <app-titulo [titulo]="(alunoSelecionado.id === 0 ? 'Novo Aluno' : 'Cód. Aluno: ' + alunoSelecionado.id) ">
             <button class="btn btn-warning" (click)="voltar()">
                 Fechar
             </button>
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <hr>
                 <button class="btn btn-success" [disabled]="!alunoForm.valid">
-                    Enviar
+                    Salvar
                 </button>
             </div>
 
@@ -41,7 +41,7 @@
     <div [ngClass]="{'col-sm-6' : alunoSelecionado, 'col-sm-12' : !alunoSelecionado}">
 
         <app-titulo [titulo]="titulo">
-            <button class="btn btn-success" (click)="voltar()">
+            <button class="btn btn-success" (click)="alunoNovo()">
                 Cadastrar Aluno
             </button>
         </app-titulo>

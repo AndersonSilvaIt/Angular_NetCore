@@ -16,6 +16,7 @@ export class ProfessoresComponent implements OnInit {
   public professorSelecionado: Professor;
 
   public professores: Professor[];
+  public modo = "post";
 
   constructor(
     private fb: FormBuilder,
@@ -45,13 +46,16 @@ export class ProfessoresComponent implements OnInit {
   }
 
   salvarProfessor(professor: Professor) {
-    this.professorService.put(professor).subscribe(
-      (retorno: Professor) => {
-        console.log(retorno);
+    professor.id === 0 ? (this.modo = "post") : (this.modo = "put");
+
+    this.professorService[this.modo](professor).subscribe(
+      (model: Professor) => {
+        console.log(model);
         this.carregarProfessores();
       },
-      (erro: any) => {
-        console.log(erro);
+      (error: any) => {
+        console.log("Deu erro");
+        console.log(error);
       }
     );
   }
@@ -71,6 +75,11 @@ export class ProfessoresComponent implements OnInit {
   professorSelected(professor: Professor) {
     this.professorSelecionado = professor;
     this.professorForm.patchValue(professor);
+  }
+
+  professorNovo() {
+    this.professorSelecionado = new Professor();
+    this.professorForm.patchValue(this.professorSelecionado);
   }
 
   voltar() {
