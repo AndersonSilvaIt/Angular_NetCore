@@ -60,6 +60,18 @@ export class ProfessoresComponent implements OnInit {
     );
   }
 
+  deletarProfessor(id: number) {
+    this.professorService.delete(id).subscribe(
+      (model: any) => {
+        this.carregarProfessores();
+        console.log(model);
+      },
+      (erro: any) => {
+        console.log(erro);
+      }
+    );
+  }
+
   criarForm() {
     this.professorForm = this.fb.group({
       id: [""],
